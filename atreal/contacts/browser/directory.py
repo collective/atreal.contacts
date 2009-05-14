@@ -17,7 +17,10 @@ class DirectoryView (BrowserView):
     def search_results(self):
         terms = self.request.form.get('search_terms', '')
         pc = self.context.portal_contacts
-        return pc(SearchableText=terms)
+        if terms == "*":
+            return pc()
+        else:    
+            return pc(SearchableText=terms)
 
     def itemRowClass(self, oddity):
         if oddity:
