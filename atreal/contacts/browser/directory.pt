@@ -1,0 +1,85 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="atreal.contacts">
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main"
+                    tal:define="terms view/search_terms;
+                                results view/search_results;">
+
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+        <h1 class="documentFirstHeading">
+            <span metal:use-macro="python:context.widget('title', mode='view')" />
+        </h1>
+
+        <div tal:replace="structure provider:plone.belowcontenttitle" />
+        
+        <form>
+            <input name="search_terms" tal:attributes="value terms" />
+            <input type="submit" value="Search" i18n:attributes="value" />
+        </form>
+        
+        <br/>
+        <hr/>
+        <br/>
+        
+        <div tal:replace="structure provider:plone.abovecontentbody" />
+        
+        <table class="listing" style="width: 100%;"
+               tal:condition="python: terms and results" >
+            <tr>
+                <th i18n:translate="">Full name</th>
+                <th i18n:translate="">Office phone</th>
+                <th i18n:translate="">Email</th>
+                <th i18n:translate="">Fax number</th>
+            </tr>
+            <tr tal:repeat="item view/search_results"
+                tal:attributes="class python:view.itemRowClass(path('repeat/item/odd'))">
+                <td>
+                    <span class="contenttype-contact summary">
+                        <img height="16" width="16"
+                             alt="Contact"
+                             src="%2B%2Bresource%2B%2Bcontact_icon.png"/>
+                            <a class="state-missing-value url"
+                               href="#"
+                               tal:attributes="href item/getURL"
+                               tal:content="item/Title">
+                                Florent MICHON</a>
+                    </span>
+                </td>
+                <td tal:content="item/office_phone"></td>
+                <td tal:define="email item/email">
+                    <a href="#" tal:condition="email"
+                       tal:attributes="href python:'mailto:'+email"
+                       tal:content="email" />
+                </td>
+                <td tal:content="item/fax_number"></td>
+            </tr>
+        </table>
+        
+        <div tal:condition="python: terms and not results" i18n:translate="">
+            No results for your search.
+        </div>
+        
+        <div tal:condition="python: not terms" i18n:translate="">
+            Please enter some search terms.
+        </div>
+        
+        <div metal:use-macro="context/document_relateditems/macros/relatedItems" i18n:translate="">
+            show related items if they exist
+        </div>
+        
+        <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>
+

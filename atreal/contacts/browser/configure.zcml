@@ -1,0 +1,73 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="atreal.contacts">
+
+    <include package="plone.app.contentmenu" />
+
+    <browser:resource
+        name="directory_icon.png"
+        image="directory_icon.png"
+        />
+
+    <browser:resource
+        name="contact_icon.png"
+        image="contact_icon.png"
+        />
+
+    <browser:resource
+        name="organization_icon.png"
+        image="organization_icon.png"
+        />
+        
+    <browser:page
+        for="..interfaces.IContact"
+        name="view"
+        class=".contact.ContactView"
+        permission="zope2.View"
+        template="contact.pt"
+        />
+        
+    <browser:page
+        for="..interfaces.IOrganization"
+        name="view"
+        class=".organization.OrganizationView"
+        permission="zope2.View"
+        template="organization.pt"
+        />
+
+    <browser:page
+        for="..interfaces.IOrganization"
+        name="delete_confirmation"
+        class=".organization.OrganizationDelConfirm"
+        permission="zope2.View"
+        template="orga_delete_confirmation.pt"
+        />
+
+
+    <browser:page
+        for="..interfaces.IDirectory"
+        name="view"
+        class=".directory.DirectoryView"
+        permission="zope2.View"
+        template="directory.pt"
+        />
+
+
+    <browser:page
+        for="..interfaces.IDirectory"
+        name="csv_import"
+        class=".csvimport.CsvImportView"
+        permission="zope2.View"
+        template="csvimport.pt"
+        />
+
+    <browser:page
+        for="..interfaces.IDirectory"
+        name="csv_export"
+        class=".csvexport.CsvExportView"
+        permission="zope2.View"
+        />
+
+    
+</configure>

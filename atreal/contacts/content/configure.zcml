@@ -1,0 +1,42 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="atreal.contacts">
+
+    <!-- Directories: -->
+    <class class=".directory.Directory">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.IDirectory"
+            />
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.IDirectory"
+            />
+    </class>
+
+    <!-- Contacts: -->
+    <class class=".contact.Contact">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.IContact"
+            />
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.IContact"
+            />
+    </class>
+    
+    <!-- Organizations: -->
+    <class class=".organization.Organization">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.IOrganization"
+            />
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.IOrganization"
+            />
+    </class>
+    
+</configure>

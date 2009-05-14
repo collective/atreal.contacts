@@ -1,0 +1,181 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="atreal.contacts">
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
+
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+        <h1 class="documentFirstHeading">
+            <span metal:use-macro="python:context.widget('title', mode='view')" />
+        </h1>
+
+        <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+        <div class="eventDetails vcard">
+        <table class="vertical listing" tal:define="orga here/getOrganization"
+               tal:condition="orga" summary="Organisation details"
+               i18n:attributes="summary summary_orga_details;">
+
+            <tbody>
+                <tr>
+                    <th colspan="2" i18n:translate="">Organization</th>
+                </tr>
+                <tr>
+                    <th i18n:translate="">Full name</th>
+                    <td>
+                        <a href="#" tal:content="orga/Title"
+                           tal:attributes="href orga/absolute_url">atReal</a>
+                    </td>
+                </tr>
+                <tr tal:condition="orga/view/showAddress">
+                    <th i18n:translate="">Address</th>
+                    <td>
+                        <div class="addressDescription"
+                             tal:define="address orga/address;
+                                         address_complement orga/address_complement;
+                                         postcode orga/postcode;
+                                         city orga/city;
+                                         country orga/country">
+                            <div>
+                            <tal:address condition="address" content="address">113 bd de Pont de Vivaux </tal:address>
+                            <br tal:condition="address" />
+                            <tal:address_complement condition="address_complement" content="address_complement">Batiment C</tal:address_complement>
+                            <br tal:condition="address_complement" />
+                            <tal:postcode condition="postcode" content="postcode">13010</tal:postcode>
+                            <tal:city condition="city" content="city">MARSEILLE
+                            </tal:city><tal:countryline condition="country">,
+                                <tal:country content="country">France</tal:country></tal:countryline>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr tal:define="email orga/getEmail"
+                    tal:condition="email">
+                    <th i18n:translate="">Email</th>
+                    <td>
+                        <a href="#" tal:content="email"
+                           tal:attributes="href python:'mailto:'+email"
+                           >contact@atreal.net</a>
+                    </td>
+                </tr>
+                <tr tal:define="website orga/getWebsite"
+                    tal:condition="website">
+                    <th i18n:translate="">Website</th>
+                    <td>
+                        <a href="#" tal:content="website"
+                           tal:attributes="href website">http://www.atreal.net/</a>
+                    </td>
+                </tr>
+                <tr tal:define="phone orga/getOffice_phone"
+                    tal:condition="phone">
+                    <th i18n:translate="">Telephone</th>
+                    <td tal:content="phone">+33 (0) 4 91 29 42 81</td>
+                </tr>
+                <tr tal:define="fax_number orga/getFax_number"
+                    tal:condition="fax_number">
+                    <th i18n:translate="">Fax number</th>
+                    <td tal:content="fax_number">+33 (0) 4 91 29 42 82</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <div tal:define="jobtitle context/getJob_title"
+             tal:condition="jobtitle">
+            <label i18n:translate="">Job title</label>
+            <div style="padding-left: 5em;" tal:content="jobtitle">
+                Ingénieur d'études
+            </div>
+        </div>
+
+        <div tal:define="department context/getDepartment"
+             tal:condition="department">
+            <label i18n:translate="">Department</label>
+            <div style="padding-left: 5em;" tal:content="department">
+                Facturation
+            </div>
+        </div>
+
+        <div tal:replace="structure provider:plone.abovecontentbody" />
+
+
+        <div class="addressDescription"
+             tal:define="address context/address;
+                         address_complement context/address_complement;
+                         postcode context/postcode;
+                         city context/city;
+                         country context/country"
+             tal:condition="view/showAddress">
+            <br/>
+            <label i18n:translate="">Address</label>
+            <div style="padding-left: 5em;">
+            <tal:address condition="address" content="address">113 bd de Pont de Vivaux </tal:address>
+            <br tal:condition="address" />
+            <tal:address_complement condition="address_complement" content="address_complement">Batiment C</tal:address_complement>
+            <br tal:condition="address_complement" />
+            <tal:postcode condition="postcode" content="postcode">13010</tal:postcode>
+            <tal:city condition="city" content="city">MARSEILLE
+            </tal:city><tal:countryline condition="country">,
+                <tal:country content="country">France</tal:country></tal:countryline>
+            </div>
+        </div>
+
+        <div class="contactDescription"
+             tal:define="email context/email;
+                         website context/website;
+                         office_phone context/office_phone;
+                         mobile_phone context/mobile_phone;
+                         private_phone context/private_phone;
+                         fax_number context/fax_number">
+            <br/><br/>
+            <div tal:condition="office_phone">
+                <label i18n:translate="">Office phone</label>
+                <div style="padding-left: 5em;" tal:content="office_phone"/>
+            </div>
+            <div tal:condition="mobile_phone">
+                <label i18n:translate="">Mobile phone</label>
+                <div style="padding-left: 5em;" tal:content="mobile_phone"/>
+            </div>
+            <div tal:condition="private_phone">
+                <label i18n:translate="">Private phone</label>
+                <div style="padding-left: 5em;" tal:content="private_phone"/>
+            </div>
+            <div tal:condition="fax_number">
+                <label i18n:translate="">Fax number</label>
+                <div style="padding-left: 5em;" tal:content="fax_number"/>
+            </div>
+            <div tal:condition="email">
+                <label i18n:translate="">Email</label>
+                <div style="padding-left: 5em;">
+                    <a href="#" tal:attributes="href python:'mailto:'+email"
+                       tal:content="email" />
+                </div>
+            </div>
+            <div tal:condition="website">
+                <label i18n:translate="">Website</label>
+                <div style="padding-left: 5em;">
+                    <a href="#" tal:attributes="href website"
+                       tal:content="website" />
+                </div>
+            </div>
+        </div>
+
+        <div metal:use-macro="context/document_relateditems/macros/relatedItems">
+            show related items if they exist
+        </div>
+    
+        <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>
+

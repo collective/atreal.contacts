@@ -1,0 +1,70 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="atreal.contacts">
+<body>
+    <div metal:fill-slot="main"
+         tal:define="useSelf python:isStructuralFolder and not isContextDefaultPage;
+                     folder_warning python:useSelf and here.portal_type != 'Topic';">
+
+      <h1 class="documentFirstHeading"
+          i18n:translate="alert_really_delete">
+        Do you really want to delete this item?
+      </h1>
+      
+
+      <ul>
+          <li tal:content="object_title">The item title (ID)</li>
+      </ul>
+
+      <form method="POST" action="#"
+            tal:attributes="action current_page_url">
+        <tal:linked_contacts tal:define="employs view/getEmployees"
+                             tal:condition="employs">
+          <div class="description" i18n:translate="">
+            This organization has
+            <tal:employ_number replace="python:len(employs)"
+                               i18n:name="employees_number"/>
+            contacts. Do you want to delete them or clear their 'organization'
+            field?
+          </div>
+          <br/>
+          <div>
+            <input type="radio" name="cascade" value="delete"/>
+            <span i18n:translate="">Delete the linked contacts.</span>
+          </div>
+          <div>
+            <input type="radio" name="cascade" value="clear_link" checked="" />
+            <span i18n:translate="">Clear their 'organisation' field.</span>
+          </div>
+          <br/>
+        </tal:linked_contacts>
+        
+        <div class="formControls">
+
+          <input type="hidden"
+                 name="form.submitted"
+                 value="1"
+                 />
+
+          <input class="destructive"
+                 type="submit"
+                 value="Delete"
+                 i18n:attributes="value;"
+                 />
+          <input class="standalone"
+                 type="submit"
+                 value="Cancel"
+                 name="form.button.Cancel"
+                 i18n:attributes="value label_cancel;"
+                 />
+        </div>
+        <input tal:replace="structure context/@@authenticator/authenticator" />
+      </form>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,175 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="atreal.contacts">
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
+
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+        <h1 class="documentFirstHeading">
+            <span metal:use-macro="python:context.widget('title', mode='view')" />
+        </h1>
+
+        <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+        <div class="addressDescription"
+             tal:define="address context/address;
+                         address_complement context/address_complement;
+                         postcode context/postcode;
+                         city context/city;
+                         country context/country"
+             tal:condition="python: address or address_complement or postcode or city or country">
+            <br/>
+            <label i18n:translate="">Address</label>
+            <div style="padding-left: 5em;">
+                <tal:address condition="address" content="address">113 bd de Pont de Vivaux </tal:address>
+                <br tal:condition="address" />
+                <tal:address_complement condition="address_complement" content="address_complement">Batiment C</tal:address_complement>
+                <br tal:condition="address_complement" />
+                <tal:postcode condition="postcode" content="postcode">13010</tal:postcode>
+                <tal:city condition="city" content="city">MARSEILLE
+                </tal:city><tal:countryline condition="country">,
+                    <tal:country content="country">France</tal:country></tal:countryline>
+            </div>
+            <br/>
+        </div>
+        
+        <div tal:define="website context/website"
+             tal:condition="website">
+            <label i18n:translate="">Website</label>
+            <div style="padding-left: 5em;">
+                <a tal:content="website" tal:attributes="href website" />
+            </div>
+            <br/>
+        </div>
+        
+        <div tal:define="email context/email"
+             tal:condition="email">
+            <label i18n:translate="">Email</label>
+            <div style="padding-left: 5em;">
+                <a tal:content="email"
+                   tal:attributes="href python:'mailto:'+email" />
+            </div>
+            <br/>
+        </div>
+        
+        <div tal:define="office_phone context/office_phone"
+             tal:condition="office_phone">
+            <label i18n:translate="">Office phone</label>
+            <div style="padding-left: 5em;" tal:content="office_phone" />
+            <br/>
+        </div>
+        
+        <div tal:define="fax_number context/fax_number"
+             tal:condition="fax_number">
+            <label i18n:translate="">Fax number</label>
+            <div style="padding-left: 5em;" tal:content="fax_number" />
+            <br/>
+        </div>
+        
+        <table tal:define="employees view/getEmployees"
+               tal:condition="employees"
+               style="width: 100%;" class="listing">
+            <thead>
+                <tr>
+                    <th style="sort" i18n:translate="">Full name</th>
+                    <th style="sort" i18n:translate="">Office phone</th>
+                    <th style="sort" i18n:translate="">Email</th>
+                    <th style="sort" i18n:translate="">Fax number</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr tal:repeat="employ employees"
+                    tal:attributes="class python:view.employRowClass(path('repeat/employ/odd'))">
+                    <td>
+                        <span class="contenttype-contact summary">
+                            <img height="16" width="16"
+                                 alt="Contact"
+                                 src="%2B%2Bresource%2B%2Bcontact_icon.png"/>
+                                <a class="state-missing-value url"
+                                   href="#"
+                                   tal:attributes="href employ/getURL"
+                                   tal:content="employ/Title">
+                                    Florent MICHON</a>
+                        </span>
+                    </td>
+                    <td tal:content="employ/office_phone" />
+                    <td tal:define="email employ/email">
+                        <a href="#" tal:condition="email"
+                           tal:attributes="href python:'mailto:'+email"
+                           tal:content="email" />
+                    </td>
+                    <td tal:content="employ/fax_number" />
+                </tr>
+            </tbody>
+        </table>
+
+        <!--<fieldset tal:define="bla view/getEmployees"-->
+        <!--     tal:condition="bla">-->
+        <!--    <legend>Employees</legend>-->
+        <!--    <tal:employees repeat="item bla">-->
+        <!--        <span class="contenttype-contact summary">-->
+        <!--            <img height="16" width="16"-->
+        <!--                 alt="Contact"-->
+        <!--                 src="%2B%2Bresource%2B%2Bcontact_icon.png"/>-->
+        <!--                <a class="state-missing-value url"-->
+        <!--                   href="#"-->
+        <!--                   tal:attributes="href item/getURL"-->
+        <!--                   tal:content="item/Title">-->
+        <!--                    Florent MICHON</a>-->
+        <!--        </span>-->
+        <!--    </tal:employees>-->
+        <!--</fieldset>-->
+        
+        <div tal:replace="structure provider:plone.abovecontentbody" />
+        <!---->
+        <!--<div class="highlighted-films" tal:condition="view/have_highlighted_films">-->
+        <!--    <h3 i18n:translate="heading_featured_films">Featured films:</h3>-->
+        <!--    <div tal:repeat="film view/highlighted_films">-->
+        <!--        <a tal:attributes="href film/url; title film/summary">-->
+        <!--            <img tal:replace="structure film/banner_tag" />-->
+        <!--            <div tal:content="film/title" />-->
+        <!--        </a>-->
+        <!--    </div>-->
+        <!--</div>-->
+        <!---->
+        <!--<p tal:condition="python: not text and is_editable"-->
+        <!--   i18n:translate="no_body_text"-->
+        <!--   class="discreet">-->
+        <!--    This item does not have any body text, click the edit tab to change it.-->
+        <!--</p>-->
+        <!---->
+        <!--<div tal:condition="text" metal:use-macro="python:context.widget('text', mode='view')" />-->
+        <!---->
+        <!--<h2 i18n:translate="title_cinema_now_showing">Now showing</h2>-->
+        <!--<dl>-->
+        <!--    <tal:block repeat="film view/films">-->
+        <!--        <dt>-->
+        <!--            <a tal:attributes="href film/url" tal:content="film/title" />-->
+        <!--            <a tal:attributes="href string:${context/absolute_url}/@@screenings?film_code=${film/film_code}"-->
+        <!--               i18n:translate="label_view_screenings">-->
+        <!--               (show times)-->
+        <!--            </a>-->
+        <!--        </dt>-->
+        <!--        <dd tal:content="film/summary" />-->
+        <!--    </tal:block>-->
+        <!--</dl>-->
+        
+        <div metal:use-macro="context/document_relateditems/macros/relatedItems">
+            show related items if they exist
+        </div>
+    
+        <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>
+

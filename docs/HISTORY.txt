@@ -1,0 +1,9 @@
+Changelog for atreal.contacts
+
+    (name of developer listed in brackets)
+
+atreal.contacts - 0.0.1 Unreleased
+
+    - Initial package structure.
+      [zopeskel]
+

@@ -1,0 +1,44 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="atreal.contacts">
+
+    <five:registerPackage package="." initialize=".initialize" />
+    
+    <include package=".browser" />
+    <include package=".content" />
+    <include package=".portlets" />
+    <include package=".contactindex" />
+    
+    
+    <i18n:registerTranslations directory="locales" />
+    
+    <genericsetup:registerProfile
+        name="default"
+        title="Contacts"
+        directory="profiles/default"
+        description="Content types to manage some informations contacts."
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <utility
+        component=".vocabularies.OrganizationsVocabularyFactory"
+        name="atreal.contacts.vocabularies.organizations"
+        />
+    
+    <subscriber
+        for=".interfaces.IGenericContact
+            zope.lifecycleevent.ObjectModifiedEvent"
+        handler=".events.indexContact"
+        />
+
+    <subscriber
+        for=".interfaces.IGenericContact
+            zope.app.container.interfaces.IObjectRemovedEvent"
+        handler=".events.unindexContact"
+        />
+
+
+</configure>

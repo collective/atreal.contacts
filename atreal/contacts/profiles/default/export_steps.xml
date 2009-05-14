@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<export-steps>
+ <export-step id="toolset"
+              handler="Products.GenericSetup.tool.exportToolset"
+              title="Required Tools">
+  Export required / forbidden tools.
+ </export-step>
+
+</export-steps>
