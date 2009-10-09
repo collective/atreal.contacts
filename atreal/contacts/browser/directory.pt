@@ -45,7 +45,8 @@
                     <span class="contenttype-contact summary">
                         <img height="16" width="16"
                              alt="Contact"
-                             src="%2B%2Bresource%2B%2Bcontact_icon.png"/>
+                             src="%2B%2Bresource%2B%2Bcontact_icon.png" 
+                             tal:attributes="src item/getIcon" />
                             <a class="state-missing-value url"
                                href="#"
                                tal:attributes="href item/getURL"
