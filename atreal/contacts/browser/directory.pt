@@ -19,14 +19,29 @@
         </h1>
 
         <div tal:replace="structure provider:plone.belowcontenttitle" />
-        
-        <form>
-            <input name="search_terms" tal:attributes="value terms" />
-            <input type="submit" value="Search" i18n:attributes="value" />
-        </form>
+
+        <p class="documentDescription" tal:condition="exists:here/aq_explicit/widget">
+            <metal:field use-macro="python:here.widget('description', mode='view')">
+                Description
+            </metal:field>
+        </p>
+  
+        <tal:block condition="not:exists:here/aq_explicit/widget">
+            <p class="documentDescription" 
+                       tal:content="context/Description" 
+                       tal:condition="context/Description"> 
+                Description
+            </p>
+        </tal:block>
         
         <br/>
-        <hr/>
+        <form>
+            <input class="inputLabelActive"
+                   name="search_terms" tal:attributes="value terms" />
+            <input class="searchButton"
+                   type="submit"
+                   i18n:domain="plone" value="Search" i18n:attributes="value" />
+        </form>
         <br/>
         
         <div tal:replace="structure provider:plone.abovecontentbody" />
@@ -64,17 +79,18 @@
             </tr>
         </table>
         
-        <div tal:condition="python: terms and not results" i18n:translate="">
+        
+        <p class="discreet"
+           tal:condition="python: terms and not results"
+           i18n:translate="">
             No results for your search.
-        </div>
+        </p>
         
-        <div tal:condition="python: not terms" i18n:translate="">
+        <p class="discreet"
+           tal:condition="python: not terms"
+           i18n:translate="">
             Please enter some search terms.
-        </div>
-        
-        <div metal:use-macro="context/document_relateditems/macros/relatedItems" i18n:translate="">
-            show related items if they exist
-        </div>
+        </p>
         
         <div tal:replace="structure provider:plone.belowcontentbody" />
 

@@ -8,10 +8,10 @@
     <five:registerPackage package="." initialize=".initialize" />
     
     <include package=".browser" />
-    <include package=".content" />
-    <include package=".portlets" />
-    <include package=".contactindex" />
     
+    <include package=".content" />
+    
+    <include package=".contactindex" />
     
     <i18n:registerTranslations directory="locales" />
     
@@ -30,15 +30,14 @@
     
     <subscriber
         for=".interfaces.IGenericContact
-            zope.lifecycleevent.ObjectModifiedEvent"
+             zope.lifecycleevent.ObjectModifiedEvent"
         handler=".events.indexContact"
         />
 
     <subscriber
         for=".interfaces.IGenericContact
-            zope.app.container.interfaces.IObjectRemovedEvent"
+             zope.app.container.interfaces.IObjectRemovedEvent"
         handler=".events.unindexContact"
         />
-
 
 </configure>

@@ -258,6 +258,13 @@ class Contact (base.ATCTContent):
     def Description (self):
         return ' '.join([' / '.join([self.getOffice_phone(), self.getEmail()])])
 
+    def setDescription(self, description):
+        """
+        Don't ever touch this method!!!
+        It's existence prevent the parent's method to be called!
+        """
+        pass
+
     def getOrganizationUID (self):
         return self.getOrganization().UID()
     

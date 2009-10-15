@@ -178,6 +178,12 @@ class Organization (base.ATCTContent):
     
     def directoryUID(self):
         return self.aq_inner.aq_parent.UID()
-    
+
+    def setDescription(self, description):
+        """
+        Don't ever touch this method!!!
+        It's existence prevent the parent's method to be called!
+        """
+        pass
     
 atapi.registerType (Organization, PROJECTNAME)

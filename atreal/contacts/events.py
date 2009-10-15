@@ -1,7 +1,14 @@
+"""
+"""
 
+import logging
+from atreal.contacts.config import PROJECTNAME
+logger = logging.getLogger(PROJECTNAME)
 
 def indexContact(obj, event):
-    print "INDEX CONTACT", event
+    """
+    """
+    logger.info("INDEX CONTACT " + str(event))
     if obj._p_jar is None:
         return
     if obj.getPhysicalPath()[-3] == "portal_factory":
@@ -9,12 +16,9 @@ def indexContact(obj, event):
     try:
         obj.portal_contacts.catalog_object(obj)
     except KeyError, e:
-        print "ERROR WHILE CATALOGING CONTACT", e
-
+        logger.error("ERROR WHILE CATALOGING CONTACT " + str(e))
 
 def unindexContact(obj, event):
+    """
+    """
     obj.portal_contacts.uncatalog_object("/".join(obj.getPhysicalPath()))
-
-
-
-

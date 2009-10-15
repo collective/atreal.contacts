@@ -7,8 +7,9 @@ class ContactView (BrowserView):
     """ Default view of a contact
     """
     
-    
     def showAddress(self):
+        """
+        """
         for name in ('address', 'address_complement', 'postcode',
                      'city', 'country'):
             value = self.context.schema[name].get(self.context)

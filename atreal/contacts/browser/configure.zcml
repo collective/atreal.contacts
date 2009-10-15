@@ -8,16 +8,19 @@
     <browser:resource
         name="directory_icon.png"
         image="directory_icon.png"
+        layer="atreal.contacts.interfaces.IContactsLayer"
         />
 
     <browser:resource
         name="contact_icon.png"
         image="contact_icon.png"
+        layer="atreal.contacts.interfaces.IContactsLayer"
         />
 
     <browser:resource
         name="organization_icon.png"
         image="organization_icon.png"
+        layer="atreal.contacts.interfaces.IContactsLayer"
         />
         
     <browser:page
@@ -26,6 +29,7 @@
         class=".contact.ContactView"
         permission="zope2.View"
         template="contact.pt"
+        layer="atreal.contacts.interfaces.IContactsLayer"
         />
         
     <browser:page
@@ -34,6 +38,7 @@
         class=".organization.OrganizationView"
         permission="zope2.View"
         template="organization.pt"
+        layer="atreal.contacts.interfaces.IContactsLayer"
         />
 
     <browser:page
@@ -42,8 +47,8 @@
         class=".organization.OrganizationDelConfirm"
         permission="zope2.View"
         template="orga_delete_confirmation.pt"
+        layer="atreal.contacts.interfaces.IContactsLayer"
         />
-
 
     <browser:page
         for="..interfaces.IDirectory"
@@ -51,8 +56,8 @@
         class=".directory.DirectoryView"
         permission="zope2.View"
         template="directory.pt"
+        layer="atreal.contacts.interfaces.IContactsLayer"
         />
-
 
     <browser:page
         for="..interfaces.IDirectory"
@@ -60,6 +65,7 @@
         class=".csvimport.CsvImportView"
         permission="zope2.View"
         template="csvimport.pt"
+        layer="atreal.contacts.interfaces.IContactsLayer"
         />
 
     <browser:page
@@ -67,7 +73,7 @@
         name="csv_export"
         class=".csvexport.CsvExportView"
         permission="zope2.View"
+        layer="atreal.contacts.interfaces.IContactsLayer"
         />
 
-    
 </configure>

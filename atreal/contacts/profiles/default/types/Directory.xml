@@ -67,9 +67,6 @@
  <property name="default_view">view</property>
  <property name="view_methods">
   <element value="view"/>
-  <element value="folder_summary_view"/>
-  <element value="folder_tabular_view"/>
-  <element value="folder_listing"/>
  </property>
  
  <!-- Finally, we define method aliases and actions. For most content
