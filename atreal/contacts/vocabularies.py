@@ -20,7 +20,7 @@ class OrganizationsVocabulary(object):
         default = [('Aucune', '')]
         items = [(r.Title, r.UID) for r in 
                     catalog(object_provides=IOrganization.__identifier__,
-                            rpath=dict(query='/'.join(context.getParentNode().getPhysicalPath()),
+                            path=dict(query='/'.join(context.getParentNode().getPhysicalPath()),
                                        depth=1),
                             sort_on='sortable_title')]
         return SimpleVocabulary.fromItems(default + items)

@@ -21,6 +21,7 @@ class CsvImportView (BrowserView):
         
         if self.request.form.get('form.button.Cancel', "") != 'Cancel':
             pt = self.context.portal_types
+            objPath = "/".join(self.context.getPhysicalPath())
             
             if bool(int(self.request.form.get('delete_existing', 0))):
                 self.context.manage_delObjects(self.context.objectIds())
@@ -47,11 +48,20 @@ class CsvImportView (BrowserView):
                     if (type == 'Contact') and (name == 'organization'):
                         if value:
                             orgas = pcon(portal_type="Organization",
-                                        Title=value)
+                                         path={'query': objPath, 'depth':1},
+                                         Title=value)
                             if len(orgas)>0:
                                 value = orgas[0].getObject()
                             else:
-                                value = None
+                                orga_id = self.context.generateUniqueId('Organization')
+                                pt.constructContent('Organization', self.context, orga_id)
+                                orga = self.context[orga_id]
+                                orga.setTitle(value)
+                                orga_field_title = orga.getField('title')
+                                orga_field_title.set(orga, value)
+                                orga.reindexObject()
+                                pcon.catalog_object(orga)
+                                value = orga
                         else:
                             value = None
                             
