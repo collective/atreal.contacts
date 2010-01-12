@@ -39,6 +39,8 @@ class CsvImportView (BrowserView):
                 
                 for name, value in zip(header, line):
                     print "Setting %s = %s" % (name, value)
+                    if (name == 'organization') and (type == 'Organization'):
+                        name = 'title'
                     field = entry.getField(name)
                     if field is None:
                         continue
