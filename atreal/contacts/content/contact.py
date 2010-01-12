@@ -39,6 +39,18 @@ ContactSchema = schemata.ATContentTypeSchema.copy() + atapi.Schema((
             description=_(u'help_lastname',
                           default=u""))
         ),
+
+    atapi.StringField('civility_title',
+        required=False,
+        searchable=True,
+        storage=atapi.AnnotationStorage(),
+        widget=atapi.StringWidget(
+            label=_(u'label_civility_title',
+                    default=u"Civility or Title"),
+            description=_(u'help_civility_title',
+                          default=u"Mister, Mr, Sir, Miss, Mrs, ..."))
+        ),
+
     
     atapi.StringField('job_title',
         required=False,
@@ -239,7 +251,7 @@ class Contact (base.ATCTContent):
     description = atapi.ATFieldProperty('description')
     
     def generateNewId(self):
-        return self.UID()
+        return self.id
 
     def Title (self):
         title = ('%s %s' % (self.getFirstname(), self.getLastname(),)).strip()

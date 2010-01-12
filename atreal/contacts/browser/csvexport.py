@@ -7,12 +7,11 @@ from Products.Five.browser import BrowserView
 
 field_list = [
     'portal_type',
-    'title',
-    'description',
+    'organization',
+    'civility_title',
     'firstname',
     'lastname',
     'job_title',
-    'organization',
     'department',
     'address',
     'address_complement',
@@ -26,7 +25,9 @@ field_list = [
     'private_phone',
     'fax_number',
 ]
-
+md_list = [
+    'subject',
+]
 class CsvExportView (BrowserView):
     """ Csv export view of a contact directory
     """
@@ -37,6 +38,19 @@ class CsvExportView (BrowserView):
             value = getattr(obj, name, '')
             if value is None:
                 value = ""
+            elif isinstance(value, tuple):
+                value = " - ".join(value)
+            elif not isinstance(value, (str, unicode)):
+                value = value.Title()
+            fields.append(value)
+        for name in md_list:
+            value = ""
+            if name in obj._md.keys(): 
+                value = obj._md[name]
+            if value is None:
+                value = ""
+            elif isinstance(value, tuple):
+                value = " - ".join(value).encode('utf-8')
             elif not isinstance(value, (str, unicode)):
                 value = value.Title()
             fields.append(value)
@@ -49,7 +63,7 @@ class CsvExportView (BrowserView):
         #data = ",".join(field_list)+"\n"
         datafile = StringIO()
         writor = csv.writer(datafile)
-        writor.writerow(field_list)
+        writor.writerow(field_list+md_list)
         
         for brain in pcon(path={'query': dpath, 'depth': 1,},
                           portal_type="Organization"):

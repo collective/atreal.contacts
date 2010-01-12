@@ -198,6 +198,12 @@ msgstr ""
 msgid "help_address_complement"
 msgstr ""
 
+msgid "label_civility_title"
+msgstr "Civilité ou titre"
+
+msgid "help_civility_title"
+msgstr "Monsieur, M., Madame, Maître, ..."
+
 #: ./content/contact.py:118
 msgid "help_city"
 msgstr ""

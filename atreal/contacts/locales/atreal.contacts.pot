@@ -198,6 +198,12 @@ msgstr ""
 msgid "help_address_complement"
 msgstr ""
 
+msgid "label_civility_title"
+msgstr ""
+
+msgid "help_civility_title"
+msgstr ""
+
 #: ./content/contact.py:118
 msgid "help_city"
 msgstr ""

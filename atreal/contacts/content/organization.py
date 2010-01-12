@@ -141,6 +141,7 @@ class Organization (base.ATCTContent):
     schema = OrganizationSchema
     
     title = atapi.ATFieldProperty('title')
+    organization = atapi.ATFieldProperty('title')
     address = atapi.ATFieldProperty('address')
     address_complement = atapi.ATFieldProperty('address_complement')
     postcode = atapi.ATFieldProperty('postcode')
@@ -152,7 +153,7 @@ class Organization (base.ATCTContent):
     fax_number = atapi.ATFieldProperty('fax_number')
 
     def generateNewId(self):
-        return self.UID()
+        return self.id
    
     def isDeletable (self):
         pc = getToolByName(self, 'portal_catalog')
@@ -185,5 +186,5 @@ class Organization (base.ATCTContent):
         It's existence prevent the parent's method to be called!
         """
         pass
-    
+
 atapi.registerType (Organization, PROJECTNAME)

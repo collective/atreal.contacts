@@ -16,11 +16,14 @@ class DirectoryView (BrowserView):
         """
         """
         terms = self.request.form.get('search_terms', '')
+        objPath = "/".join(self.context.getPhysicalPath())
         pc = self.context.portal_contacts
         if terms == "*":
-            return pc(sort_on='sortable_title')
+            return pc(sort_on='sortable_title',
+                      path={'query': objPath, 'depth':1})
         else:    
-            return pc(SearchableText=terms, sort_on='sortable_title')
+            return pc(SearchableText=terms, sort_on='sortable_title',
+                      path={'query': objPath, 'depth':1})
 
     def itemRowClass(self, oddity):
         """
