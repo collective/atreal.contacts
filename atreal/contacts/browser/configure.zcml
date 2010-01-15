@@ -76,4 +76,12 @@
         layer="atreal.contacts.interfaces.IContactsLayer"
         />
 
+    <browser:page
+        for="..interfaces.IDirectory"
+        name="csv_mailing"
+        class=".csvexport.CsvMailingView"
+        permission="zope2.View"
+        layer="atreal.contacts.interfaces.IContactsLayer"
+        />
+
 </configure>

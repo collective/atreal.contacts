@@ -15,10 +15,8 @@ class OrganizationView(BrowserView):
     
     def getEmployees(self):
         pc = getToolByName(self.context, 'portal_contacts')
-        #brains = pc(object_provides=IContact.__identifier__,
-        #           getOrganizationUID=self.context.UID(),
-        #           sort_on='sortable_title')
-        brains = pc(getOrganizationUID=self.context.UID(),
+        brains = pc(portal_type="Contact",
+                   getOrganizationUID=self.context.UID(),
                    sort_on='sortable_title')
         return brains
     
@@ -91,10 +89,8 @@ class OrganizationDelConfirm(BrowserView):
     
     def getEmployees(self):
         pc = getToolByName(self.context, 'portal_contacts')
-        #brains = pc(object_provides=IContact.__identifier__,
-        #           getOrganizationUID=self.context.UID(),
-        #           sort_on='sortable_title')
-        brains = pc(getOrganizationUID=self.context.UID(),
+        brains = pc(portal_type="Contact",
+                   getOrganizationUID=self.context.UID(),
                    sort_on='sortable_title')
         print "getEmployees yielded %d contacts" % len(brains)
         return brains

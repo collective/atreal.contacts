@@ -32,3 +32,20 @@ class DirectoryView (BrowserView):
             return "odd"
         else:
             return "even"
+
+    def commonCounter(self, type):
+        """
+        """
+        return len(self.context.portal_contacts(portal_type=type,
+                      path={'query': "/".join(self.context.getPhysicalPath()), 'depth':1}))
+
+    def countContact(self):
+        """
+        """
+        return self.commonCounter('Contact')
+
+    def countOrganization(self):
+        """
+        """
+        return self.commonCounter('Organization')
+

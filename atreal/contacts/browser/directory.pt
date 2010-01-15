@@ -14,6 +14,27 @@
 
         <div tal:replace="structure provider:plone.abovecontenttitle" />
 
+        <div class="eventDetails">
+                    <span class="contenttype-organization summary">
+                        <img height="16" width="16"
+                             alt="Organization"
+                             src="%2B%2Bresource%2B%2Borganization_icon.png"
+                             />
+                               <span tal:content="view/countOrganization" />
+                               <span i18n:translate="">Organization</span>(s)
+                    </span>
+                    <span class="contenttype-contact summary">
+                        <img height="16" width="16"
+                             alt="Contact"
+                             src="%2B%2Bresource%2B%2Bcontact_icon.png"
+                             />
+                               <span tal:content="view/countContact" />
+                               <span i18n:translate="">Contact</span>(s)
+                    </span>
+
+        </div>
+
+
         <h1 class="documentFirstHeading">
             <span metal:use-macro="python:context.widget('title', mode='view')" />
         </h1>
@@ -34,7 +55,28 @@
             </p>
         </tal:block>
         
-        <br/>
+        <!--div class="eventDetails">
+                    <span class="contenttype-organization summary">
+                        <img height="16" width="16"
+                             alt="Organization"
+                             src="%2B%2Bresource%2B%2Borganization_icon.png"
+                             />
+                               <span tal:content="view/countOrganization" />
+                               <span i18n:translate="">Organization</span>(s)
+                    </span>
+                    <br/>
+                    <span class="contenttype-contact summary">
+                        <img height="16" width="16"
+                             alt="Contact"
+                             src="%2B%2Bresource%2B%2Bcontact_icon.png"
+                             />
+                               <span tal:content="view/countContact" />
+                               <span i18n:translate="">Contact</span>(s)
+                    </span>
+
+        </div-->
+
+         <br/>
         <form>
             <input class="inputLabelActive"
                    name="search_terms" tal:attributes="value terms" />

@@ -157,7 +157,7 @@ class Organization (base.ATCTContent):
    
     def isDeletable (self):
         pc = getToolByName(self, 'portal_catalog')
-        brains = pc(object_provides=IContact.__identifier__,
+        brains = pc(portal_type="Contact",
                     getOrganizationUID=self.UID())
         if len(brains) > 0:
             return False
@@ -179,6 +179,10 @@ class Organization (base.ATCTContent):
     
     def directoryUID(self):
         return self.aq_inner.aq_parent.UID()
+
+    def getOrganizationUID (self):
+        return self.UID()
+
 
     def setDescription(self, description):
         """
