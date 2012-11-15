@@ -2,7 +2,11 @@
 """
 
 from zope.interface import implements
-from zope.app.schema.vocabulary import IVocabularyFactory
+try:
+    from zope.schema.interfaces import IVocabularyFactory
+except ImportError:
+    from zope.app.schema.vocabulary import IVocabularyFactory
+
 from zope.schema.vocabulary import SimpleVocabulary
 
 from Products.CMFCore.utils import getToolByName

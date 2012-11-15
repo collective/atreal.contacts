@@ -7,7 +7,8 @@
       i18n:domain="atreal.contacts">
 <body>
     <div metal:fill-slot="main"
-         tal:define="useSelf python:isStructuralFolder and not isContextDefaultPage;
+         tal:define="plone_view nocall:context/@@plone;
+                     useSelf python:plone_view.isStructuralFolder() and not plone_view.isFolderOrFolderDefaultPage();
                      folder_warning python:useSelf and here.portal_type != 'Topic';">
 
       <h1 class="documentFirstHeading"
@@ -18,7 +19,7 @@
       <br/>
 
       <form method="POST" action="#"  enctype="multipart/form-data"
-            tal:attributes="action current_page_url">
+            tal:attributes="action plone_view/getCurrentUrl">
         
         <div>
             <label i18n:translate="">Csv file</label>
@@ -30,12 +31,14 @@
         <div>
             <label>Fiches existantes :</label>
             <div>
-            <input name="delete_existing" type="radio" value="0" checked="checked"/>
-            Conserver
+            <input name="delete_existing" id="delete_existing_0"
+                   type="radio" value="0" checked="checked"/>
+            <label for="delete_existing_0" i18n:translate="">Conserver</label>
             </div>
             <div>
-            <input name="delete_existing" type="radio" value="1" />
-            Supprimer
+            <input name="delete_existing" id="delete_existing_1"
+                   type="radio" value="1" />
+            <label for="delete_existing_1" i18n:translate="">Supprimer</label>
             </div>
         </div>
         
