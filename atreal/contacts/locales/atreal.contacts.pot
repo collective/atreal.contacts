@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-03-09 09:47+0000\n"
+"POT-Creation-Date: 2012-11-16 13:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,350 +17,369 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: atreal.contacts\n"
 
-#: ./browser/organization.py:64
+#: ../browser/organization.py:62
 msgid "${title} has been deleted."
 msgstr ""
 
-#. Default: "A content type describing a contact."
-#: ./profiles/default/types/Contact.xml
+#: ../profiles/default/types/Contact.xml
 msgid "A content type describing a contact."
 msgstr ""
 
-#. Default: "A content type describing an organization."
-#: ./profiles/default/types/Organization.xml
+#: ../profiles/default/types/Organization.xml
 msgid "A content type describing an organization."
 msgstr ""
 
-#. Default: "A folder which can contain contacts."
-#: ./profiles/default/types/Directory.xml
+#: ../profiles/default/types/Directory.xml
 msgid "A folder which can contain contacts."
 msgstr ""
 
-#: ./interfaces.py:20
+#: ../interfaces.py:22
 msgid "A short summary of this folder"
 msgstr ""
 
-#: ./portlets/searchcontacts.py:61
-msgid "Add Search Portlet"
-msgstr ""
-
-#. Default: "Address"
-#: ./browser/organization.pt:29
+#: ../browser/contact.pt:38
+#: ../browser/organization.pt:29
 msgid "Address"
 msgstr ""
 
-#. Default: "Clear their 'organisation' field."
-#: ./browser/orga_delete_confirmation.pt:42
+#: ../browser/orga_delete_confirmation.pt:41
 msgid "Clear their 'organisation' field."
 msgstr ""
 
-#. Default: "Contact"
-#: ./profiles/default/types/Contact.xml
+#: ../browser/directory.pt:32
+#: ../profiles/default/types/Contact.xml
 msgid "Contact"
 msgstr ""
 
-#. Default: "Delete"
-#: ./browser/orga_delete_confirmation.pt:54
+#: ../browser/csvimport.pt:25
+msgid "Csv file"
+msgstr ""
+
+#: ../browser/csvimport.pt:14
+msgid "Csv file import"
+msgstr ""
+
+#: ../browser/orga_delete_confirmation.pt:53
 msgid "Delete"
 msgstr ""
 
-#. Default: "Delete the linked contacts."
-#: ./browser/orga_delete_confirmation.pt:38
+#: ../browser/orga_delete_confirmation.pt:37
 msgid "Delete the linked contacts."
 msgstr ""
 
-#: ./browser/organization.py:78
+#: ../browser/organization.py:76
 msgid "Deleted all contacts linked to the '${title}' organisation"
 msgstr ""
 
-#. Default: "Department"
-#: ./browser/contact.pt:100
+#: ../browser/contact.pt:100
 msgid "Department"
 msgstr ""
 
-#: ./interfaces.py:19
+#: ../interfaces.py:21
 msgid "Description"
 msgstr ""
 
-#. Default: "Directory"
-#: ./profiles/default/types/Directory.xml
+#: ../profiles/default/types/Directory.xml
 msgid "Directory"
 msgstr ""
 
-#: ./portlets/searchcontacts.py:70
-msgid "Edit Search Portlet"
-msgstr ""
-
-#. Default: "Email"
-#: ./browser/organization.pt:54
+#: ../browser/contact.pt:61
+#: ../browser/directory.pt:96
+#: ../browser/organization.pt:54
 msgid "Email"
 msgstr ""
 
-#: ./portlets/searchcontacts.py:21
-msgid "Enable LiveSearch"
+#: ../browser/csvimport.pt:32
+msgid "Existing entries:"
 msgstr ""
 
-#: ./portlets/searchcontacts.py:22
-msgid "Enables the LiveSearch feature, which shows live results if the browser supports JavaScript."
-msgstr ""
-
-#. Default: "Fax number"
-#: ./browser/organization.pt:71
+#: ../browser/contact.pt:83
+#: ../browser/directory.pt:97
+#: ../browser/organization.pt:71
 msgid "Fax number"
 msgstr ""
 
-#. Default: "Full name"
-#: ./browser/organization.pt:81
+#: ../browser/contact.pt:31
+#: ../browser/directory.pt:94
+#: ../browser/organization.pt:81
 msgid "Full name"
 msgstr ""
 
-#. Default: "Job title"
-#: ./browser/contact.pt:92
+#: ../browser/csvimport.pt:60
+msgid "Import"
+msgstr ""
+
+#: ../browser/contact.pt:92
 msgid "Job title"
 msgstr ""
 
-#. Default: "Mobile phone"
-#: ./browser/contact.pt:143
+#: ../browser/csvimport.pt:36
+msgid "Keep all contacts"
+msgstr ""
+
+#: ../browser/contact.pt:143
 msgid "Mobile phone"
 msgstr ""
 
-#. Default: "No results for your search."
-#: ./browser/directory.pt:66
+#: ../browser/directory.pt:125
 msgid "No results for your search."
 msgstr ""
 
-#. Default: "Office phone"
-#: ./browser/organization.pt:64
+#: ../browser/contact.pt:139
+#: ../browser/directory.pt:95
+#: ../browser/organization.pt:64
 msgid "Office phone"
 msgstr ""
 
-#. Default: "Organization"
-#: ./browser/contact.pt:28
+#: ../browser/contact.pt:28
+#: ../browser/directory.pt:24
+#: ../profiles/default/types/Organization.xml
 msgid "Organization"
 msgstr ""
 
-#. Default: "Please enter some search terms."
-#: ./browser/directory.pt:70
+#: ../browser/directory.pt:131
 msgid "Please enter some search terms."
 msgstr ""
 
-#. Default: "Private phone"
-#: ./browser/contact.pt:147
+#: ../browser/contact.pt:147
 msgid "Private phone"
 msgstr ""
 
-#. Default: "Search"
-#: ./browser/directory.pt:25
-msgid "Search"
+#: ../browser/csvimport.pt:47
+msgid "Remove all contacts"
 msgstr ""
 
-#. Default: "Telephone"
-#: ./browser/contact.pt:78
+#: ../browser/csvimport.pt:41
+msgid "Remove matching existing contacts"
+msgstr ""
+
+#: ../browser/contact.pt:78
 msgid "Telephone"
 msgstr ""
 
-#: ./browser/organization.py:51
+#: ../browser/csvimport.py:100
+msgid "The CSV file has been imported."
+msgstr ""
+
+#: ../browser/organization.py:49
 msgid "The deletion of ${title} has been canceled."
 msgstr ""
 
-#. Default: "This organization has ${employees_number} contacts. Do you want to delete them or clear their 'organization' field?"
-#: ./browser/orga_delete_confirmation.pt:30
+#: ../browser/orga_delete_confirmation.pt:29
 msgid "This organization has ${employees_number} contacts. Do you want to delete them or clear their 'organization' field?"
 msgstr ""
 
-#: ./portlets/searchcontacts.py:62
-msgid "This portlet shows a search box."
-msgstr ""
-
-#: ./interfaces.py:16
+#: ../interfaces.py:19
 msgid "Title"
 msgstr ""
 
-#: ./browser/organization.py:83
+#: ../browser/organization.py:81
 msgid "Unlinked all the contacts from the '${title}' organisation"
 msgstr ""
 
-#. Default: "Website"
-#: ./browser/organization.pt:45
+#: ../browser/contact.pt:70
+#: ../browser/organization.pt:45
 msgid "Website"
 msgstr ""
 
 #. Default: "Do you really want to delete this item?"
-#: ./browser/orga_delete_confirmation.pt:13
+#: ../browser/orga_delete_confirmation.pt:13
 msgid "alert_really_delete"
 msgstr ""
 
-#: ./content/contact.py:85
+#: ../content/contact.py:99
+#: ../content/organization.py:30
 msgid "help_address"
 msgstr ""
 
-#: ./content/contact.py:96
+#: ../content/contact.py:110
+#: ../content/organization.py:41
 msgid "help_address_complement"
 msgstr ""
 
-msgid "label_civility_title"
-msgstr ""
-
-msgid "help_civility_title"
-msgstr ""
-
-#: ./content/contact.py:118
+#: ../content/contact.py:132
+#: ../content/organization.py:63
 msgid "help_city"
 msgstr ""
 
-#: ./content/contact.py:129
+#. Default: "Mister, Mr, Sir, Miss, Mrs, ..."
+#: ../content/contact.py:50
+msgid "help_civility_title"
+msgstr ""
+
+#: ../content/contact.py:143
+#: ../content/organization.py:74
 msgid "help_country"
 msgstr ""
 
-#: ./content/contact.py:73
+#: ../content/contact.py:87
 msgid "help_department"
 msgstr ""
 
-#: ./content/contact.py:207
+#: ../content/contact.py:221
+#: ../content/organization.py:130
 msgid "help_description"
 msgstr ""
 
-#: ./content/contact.py:140
+#: ../content/contact.py:154
+#: ../content/organization.py:85
 msgid "help_email"
 msgstr ""
 
-#: ./content/contact.py:195
+#: ../content/contact.py:209
+#: ../content/organization.py:118
 msgid "help_fax_number"
 msgstr ""
 
-#: ./content/contact.py:26
+#: ../content/contact.py:28
 msgid "help_firstname"
 msgstr ""
 
-#: ./content/contact.py:48
+#: ../content/contact.py:62
 msgid "help_job_title"
 msgstr ""
 
-#: ./content/contact.py:37
+#: ../content/contact.py:39
 msgid "help_lastname"
 msgstr ""
 
-#: ./content/contact.py:173
+#: ../content/contact.py:187
 msgid "help_mobile_phone"
 msgstr ""
 
-#: ./content/contact.py:162
+#: ../content/contact.py:176
+#: ../content/organization.py:107
 msgid "help_office_phone"
 msgstr ""
 
-#: ./content/contact.py:62
+#: ../content/contact.py:76
+#: ../content/organization.py:125
 msgid "help_organization"
 msgstr ""
 
-#: ./content/contact.py:107
+#: ../content/contact.py:121
+#: ../content/organization.py:52
 msgid "help_postcode"
 msgstr ""
 
-#: ./content/contact.py:184
+#: ../content/contact.py:198
 msgid "help_private_phone"
 msgstr ""
 
-#: ./content/contact.py:151
+#: ../content/contact.py:165
+#: ../content/organization.py:96
 msgid "help_website"
 msgstr ""
 
 #. Default: "Address"
-#: ./content/contact.py:83
+#: ../content/contact.py:97
+#: ../content/organization.py:28
 msgid "label_address"
 msgstr ""
 
 #. Default: "Address Complement"
-#: ./content/contact.py:94
+#: ../content/contact.py:108
+#: ../content/organization.py:39
 msgid "label_address_complement"
 msgstr ""
 
 #. Default: "Cancel"
-#: ./browser/orga_delete_confirmation.pt:59
+#: ../browser/csvimport.pt:66
+#: ../browser/orga_delete_confirmation.pt:58
 msgid "label_cancel"
 msgstr ""
 
 #. Default: "City"
-#: ./content/contact.py:116
+#: ../content/contact.py:130
+#: ../content/organization.py:61
 msgid "label_city"
 msgstr ""
 
+#. Default: "Civility or Title"
+#: ../content/contact.py:48
+msgid "label_civility_title"
+msgstr ""
+
 #. Default: "Country"
-#: ./content/contact.py:127
+#: ../content/contact.py:141
+#: ../content/organization.py:72
 msgid "label_country"
 msgstr ""
 
 #. Default: "Department"
-#: ./content/contact.py:71
+#: ../content/contact.py:85
 msgid "label_department"
 msgstr ""
 
 #. Default: "Description"
-#: ./content/contact.py:206
+#: ../content/contact.py:220
+#: ../content/organization.py:129
 msgid "label_description"
 msgstr ""
 
 #. Default: "Email"
-#: ./content/contact.py:138
+#: ../content/contact.py:152
+#: ../content/organization.py:83
 msgid "label_email"
 msgstr ""
 
 #. Default: "Fax Number"
-#: ./content/contact.py:193
+#: ../content/contact.py:207
+#: ../content/organization.py:116
 msgid "label_fax_number"
 msgstr ""
 
 #. Default: "First Name"
-#: ./content/contact.py:24
+#: ../content/contact.py:26
 msgid "label_firstname"
 msgstr ""
 
 #. Default: "Job Title"
-#: ./content/contact.py:46
+#: ../content/contact.py:60
 msgid "label_job_title"
 msgstr ""
 
 #. Default: "Last Name"
-#: ./content/contact.py:35
+#: ../content/contact.py:37
 msgid "label_lastname"
 msgstr ""
 
 #. Default: "Mobile Phone"
-#: ./content/contact.py:171
+#: ../content/contact.py:185
 msgid "label_mobile_phone"
 msgstr ""
 
 #. Default: "Office Phone"
-#: ./content/contact.py:160
+#: ../content/contact.py:174
+#: ../content/organization.py:105
 msgid "label_office_phone"
 msgstr ""
 
 #. Default: "Organization"
-#: ./content/contact.py:60
+#: ../content/contact.py:74
+#: ../content/organization.py:124
 msgid "label_organization"
 msgstr ""
 
 #. Default: "Post Code"
-#: ./content/contact.py:105
+#: ../content/contact.py:119
+#: ../content/organization.py:50
 msgid "label_postcode"
 msgstr ""
 
 #. Default: "Private Phone"
-#: ./content/contact.py:182
+#: ../content/contact.py:196
 msgid "label_private_phone"
 msgstr ""
 
 #. Default: "Website"
-#: ./content/contact.py:149
+#: ../content/contact.py:163
+#: ../content/organization.py:94
 msgid "label_website"
 msgstr ""
 
-#. Default: "show related items if they exist"
-#: ./browser/directory.pt:74
-msgid "show related items if they exist"
-msgstr ""
-
 #. Default: "Organisation details"
-#: ./browser/contact.pt:22
+#: ../browser/contact.pt:22
 msgid "summary_orga_details"
 msgstr ""
 

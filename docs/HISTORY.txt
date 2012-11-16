@@ -5,6 +5,9 @@ Changelog for atreal.contacts
 0.0.2 (Unreleased)
 ------------------
 
+- i18n fixes.
+  [thomasdesvenain]
+
 - Plone 4 compatibility.
   [thomasdesvenain]
 
