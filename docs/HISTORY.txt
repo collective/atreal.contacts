@@ -8,6 +8,11 @@ Changelog for atreal.contacts
 - Plone 4 compatibility.
   [thomasdesvenain]
 
+- New csv import mode: we can just update existing contacts now.
+  [thomasdesvenain]
+
+- Ids are generated from contact or organisation name.
+  [thomasdesvenain]
 
 atreal.contacts - 0.0.1 Unreleased
 

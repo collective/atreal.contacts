@@ -4,6 +4,7 @@
 import csv
 
 from Products.Five.browser import BrowserView
+from plone.i18n.normalizer.interfaces import IUserPreferredURLNormalizer
 
 from atreal.contacts import ContactsMessageFactory as _
 
@@ -23,22 +24,44 @@ class CsvImportView (BrowserView):
             pt = self.context.portal_types
             objPath = "/".join(self.context.getPhysicalPath())
             
-            if bool(int(self.request.form.get('delete_existing', 0))):
+            import_mode = int(self.request.form.get('delete_existing', 0))
+
+            if import_mode == 2:
                 self.context.manage_delObjects(self.context.objectIds())
                 self.context.reindexObject()
             
             file_upload = self.request.form.get('csv_upload', None)
             if file_upload is None:
                 pass
+
             reader = csv.reader(file_upload)
             header = reader.next()[1:]
+            
+            normalizer = IUserPreferredURLNormalizer(self.request)
+
+
             for line in reader:
-                type, line = line[0], line[1:]
-                entry_id = self.context.generateUniqueId(type)
-                pt.constructContent(type, self.context, entry_id)
-                entry = self.context[entry_id]
+                type, infos = line[0], line[1:]
+                organization, civility, firstname, lastname = infos[0:4]
+                if type == 'Organization':
+                    title = organization
+                elif type == 'Contact':
+                    title = "%s %s" % (firstname, lastname)
+                else:
+                    raise ValueError, "Entry must have a type : %s" % line
                 
-                for name, value in zip(header, line):
+                entry_id = normalizer.normalize(unicode(title))
+                if import_mode == 2 and entry_id in self.context:
+                    #Delete contents that exists
+                    self.context.manage_delObjects([entry_id])
+                    
+                if not(import_mode == 0 and entry_id in self.context):
+                    #Do not create contents that ever exist
+                    pt.constructContent(type, self.context, entry_id)
+
+                entry = self.context[entry_id]
+                     
+                for name, value in zip(header, infos):
                     print "Setting %s = %s" % (name, value)
                     if (name == 'organization') and (type == 'Organization'):
                         name = 'title'
@@ -54,19 +77,21 @@ class CsvImportView (BrowserView):
                                 value = orgas[0].getObject()
                             else:
                                 orga_id = self.context.generateUniqueId('Organization')
-                                pt.constructContent('Organization', self.context, orga_id)
+                                pt.constructContent('Organization', self.context, orga_id, title=value)
                                 orga = self.context[orga_id]
-                                orga.setTitle(value)
-                                orga_field_title = orga.getField('title')
-                                orga_field_title.set(orga, value)
-                                orga.reindexObject()
+                                orga.processForm()
                                 pcon.catalog_object(orga)
                                 value = orga
                         else:
                             value = None
-                            
-                    field.set(entry, value)
-                entry.reindexObject()
+
+                    if not value and import_mode == 0:
+                        # do not set empty values if "keep all contacts" option is selected
+                        continue
+                    else: 
+                        field.set(entry, value)
+
+                entry.processForm()
                 pcon.catalog_object(entry)
         
         self.context.reindexObject()    

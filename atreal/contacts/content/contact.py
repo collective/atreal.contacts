@@ -250,10 +250,12 @@ class Contact (base.ATCTContent):
     fax_number = atapi.ATFieldProperty('fax_number')
     description = atapi.ATFieldProperty('description')
     
-    def generateNewId(self):
-        return self.id
+    #def generateNewId(self):
+    #    return self.id
 
     def Title (self):
+        """Title is First Name + Last Name
+        """
         title = ('%s %s' % (self.getFirstname(), self.getLastname(),)).strip()
         if title :
             return title
@@ -268,6 +270,8 @@ class Contact (base.ATCTContent):
         pass
 
     def Description (self):
+        """
+        """
         return ' '.join([' / '.join([self.getOffice_phone(), self.getEmail()])])
 
     def setDescription(self, description):

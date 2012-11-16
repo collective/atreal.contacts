@@ -29,16 +29,22 @@
         <br/>
         
         <div>
-            <label>Fiches existantes :</label>
+            <label i18n:translate="">Existing entries:</label>
             <div>
-            <input name="delete_existing" id="delete_existing_0"
-                   type="radio" value="0" checked="checked"/>
-            <label for="delete_existing_0" i18n:translate="">Conserver</label>
+              <input name="delete_existing" id="delete_existing_0"
+                     type="radio" value="0" checked="checked" />
+              <label for="delete_existing_0" i18n:translate="">Keep all contacts</label>
             </div>
+              <div>
+                <input name="delete_existing" id="delete_existing_2"
+                       type="radio" value="2" />
+              <label for="delete_existing_2" i18n:translate="">Remove matching existing contacts</label>
+            </div>
+
             <div>
-            <input name="delete_existing" id="delete_existing_1"
-                   type="radio" value="1" />
-            <label for="delete_existing_1" i18n:translate="">Supprimer</label>
+              <input name="delete_existing" id="delete_existing_1"
+                     type="radio" value="1" />
+              <label for="delete_existing_1" i18n:translate="">Remove all contacts</label>
             </div>
         </div>
         
