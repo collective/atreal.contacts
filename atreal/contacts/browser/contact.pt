@@ -34,7 +34,7 @@
                            tal:attributes="href orga/absolute_url">atReal</a>
                     </td>
                 </tr>
-                <tr tal:condition="orga/view/showAddress">
+                <tr tal:condition="orga/@@view/showAddress">
                     <th i18n:translate="">Address</th>
                     <td>
                         <div class="addressDescription"
