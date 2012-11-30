@@ -12,9 +12,8 @@ Changelog for atreal.contacts
   [thomasdesvenain]
 
 - New csv import mode: we can just update existing contacts now.
-  [thomasdesvenain]
-
-- Ids are generated from contact or organisation name.
+  Added an 'id' column on export and import (not required) to detect matching
+  values.
   [thomasdesvenain]
 
 atreal.contacts - 0.0.1 Unreleased

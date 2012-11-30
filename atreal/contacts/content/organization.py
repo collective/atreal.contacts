@@ -152,8 +152,8 @@ class Organization (base.ATCTContent):
     office_phone = atapi.ATFieldProperty('office_phone')
     fax_number = atapi.ATFieldProperty('fax_number')
 
-    #def generateNewId(self):
-    #    return self.id
+    def generateNewId(self):
+        return self.id
    
     def isDeletable (self):
         pc = getToolByName(self, 'portal_catalog')

@@ -250,8 +250,8 @@ class Contact (base.ATCTContent):
     fax_number = atapi.ATFieldProperty('fax_number')
     description = atapi.ATFieldProperty('description')
     
-    #def generateNewId(self):
-    #    return self.id
+    def generateNewId(self):
+        return self.id
 
     def Title (self):
         """Title is First Name + Last Name

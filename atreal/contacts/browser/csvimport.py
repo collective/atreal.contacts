@@ -35,12 +35,19 @@ class CsvImportView (BrowserView):
                 pass
 
             reader = csv.reader(file_upload)
-            header = reader.next()[1:]
+            firstline = reader.next()
+            has_id_column = firstline[0] == 'id'
+            if has_id_column:
+                header = firstline[2:]
+            else:
+                header = firstline[1:]
             
             normalizer = IUserPreferredURLNormalizer(self.request)
 
-
             for line in reader:
+                if has_id_column:
+                    entry_id, line = line[0], line[1:]
+
                 type, infos = line[0], line[1:]
                 organization, civility, firstname, lastname = infos[0:4]
                 if type == 'Organization':
@@ -50,8 +57,10 @@ class CsvImportView (BrowserView):
                 else:
                     raise ValueError, "Entry must have a type : %s" % line
                 
-                entry_id = normalizer.normalize(unicode(title))
-                if import_mode == 2 and entry_id in self.context:
+                if not has_id_column:
+                    entry_id = normalizer.normalize(title)
+
+                if import_mode == 1 and entry_id in self.context:
                     #Delete contents that exists
                     self.context.manage_delObjects([entry_id])
                     

@@ -6,6 +6,7 @@ from StringIO import StringIO
 from Products.Five.browser import BrowserView
 
 field_list = [
+    'id',
     'portal_type',
     'organization',
     'civility_title',
@@ -86,6 +87,7 @@ class CsvExportView (BrowserView):
 
 
 mailing_field_list = [
+    'id',
     'civility_title',
     'firstname',
     'lastname',
