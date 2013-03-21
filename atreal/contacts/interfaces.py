@@ -2,10 +2,15 @@
 """
 
 from zope.interface import Interface
-from zope.app.container.constraints import contains
+try:
+    from zope.container.constraints import contains
+except ImportError:
+    from zope.app.container.constraints import contains
+
 from zope import schema
 
 from atreal.contacts import ContactsMessageFactory as _
+
 
 class IContactsLayer(Interface):
     """ Marker interface that defines a Zope 3 browser layer.
