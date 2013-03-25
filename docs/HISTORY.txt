@@ -5,6 +5,9 @@ Changelog for atreal.contacts
 0.0.2 (Unreleased)
 ------------------
 
+- Use viewlet to show related items
+  [thomasdesvenain]
+
 - i18n fixes.
   [thomasdesvenain]
 
