@@ -15,22 +15,24 @@
         <div tal:replace="structure provider:plone.abovecontenttitle" />
 
         <div class="eventDetails">
-                    <span class="contenttype-organization summary">
+                    <a class="contenttype-organization"
+                       tal:attributes="href string:${context/absolute_url}?type=Organization">
                         <img height="16" width="16"
                              alt="Organization"
                              src="%2B%2Bresource%2B%2Borganization_icon.png"
                              />
                                <span tal:content="view/countOrganization" />
                                <span i18n:translate="">Organization</span>(s)
-                    </span>
-                    <span class="contenttype-contact summary">
+                    </a>
+                    <a class="contenttype-contact summary"
+                       tal:attributes="href string:${context/absolute_url}?type=Contact">
                         <img height="16" width="16"
                              alt="Contact"
                              src="%2B%2Bresource%2B%2Bcontact_icon.png"
                              />
                                <span tal:content="view/countContact" />
                                <span i18n:translate="">Contact</span>(s)
-                    </span>
+                    </a>
 
         </div>
 
@@ -46,15 +48,15 @@
                 Description
             </metal:field>
         </p>
-  
+
         <tal:block condition="not:exists:here/aq_explicit/widget">
-            <p class="documentDescription" 
-                       tal:content="context/Description" 
-                       tal:condition="context/Description"> 
+            <p class="documentDescription"
+                       tal:content="context/Description"
+                       tal:condition="context/Description">
                 Description
             </p>
         </tal:block>
-        
+
         <!--div class="eventDetails">
                     <span class="contenttype-organization summary">
                         <img height="16" width="16"
@@ -85,11 +87,11 @@
                    i18n:domain="plone" value="Search" i18n:attributes="value" />
         </form>
         <br/>
-        
+
         <div tal:replace="structure provider:plone.abovecontentbody" />
-        
+
         <table class="listing" style="width: 100%;"
-               tal:condition="python: terms and results" >
+               tal:condition="results" >
             <tr>
                 <th i18n:translate="">Full name</th>
                 <th i18n:translate="">Office phone</th>
@@ -102,7 +104,7 @@
                     <span class="contenttype-contact summary">
                         <img height="16" width="16"
                              alt="Contact"
-                             src="%2B%2Bresource%2B%2Bcontact_icon.png" 
+                             src="%2B%2Bresource%2B%2Bcontact_icon.png"
                              tal:attributes="src item/getIcon" />
                             <a class="state-missing-value url"
                                href="#"
@@ -120,20 +122,20 @@
                 <td tal:content="item/fax_number"></td>
             </tr>
         </table>
-        
-        
+
+
         <p class="discreet"
            tal:condition="python: terms and not results"
            i18n:translate="">
             No results for your search.
         </p>
-        
+
         <p class="discreet"
            tal:condition="python: not terms"
            i18n:translate="">
             Please enter some search terms.
         </p>
-        
+
         <div tal:replace="structure provider:plone.belowcontentbody" />
 
     </tal:main-macro>

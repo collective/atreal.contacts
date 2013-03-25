@@ -5,6 +5,9 @@ Changelog for atreal.contacts
 0.0.2 (Unreleased)
 ------------------
 
+- Organization and contact counters links to complete list.
+  [thomasdesvenain]
+
 - Use viewlet to show related items
   [thomasdesvenain]
 
