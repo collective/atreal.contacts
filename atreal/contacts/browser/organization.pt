@@ -39,7 +39,7 @@
             </div>
             <br/>
         </div>
-        
+
         <div tal:define="website context/website"
              tal:condition="website">
             <label i18n:translate="">Website</label>
@@ -48,7 +48,7 @@
             </div>
             <br/>
         </div>
-        
+
         <div tal:define="email context/email"
              tal:condition="email">
             <label i18n:translate="">Email</label>
@@ -58,21 +58,21 @@
             </div>
             <br/>
         </div>
-        
+
         <div tal:define="office_phone context/office_phone"
              tal:condition="office_phone">
             <label i18n:translate="">Office phone</label>
             <div style="padding-left: 5em;" tal:content="office_phone" />
             <br/>
         </div>
-        
+
         <div tal:define="fax_number context/fax_number"
              tal:condition="fax_number">
             <label i18n:translate="">Fax number</label>
             <div style="padding-left: 5em;" tal:content="fax_number" />
             <br/>
         </div>
-        
+
         <table tal:define="employees view/getEmployees"
                tal:condition="employees"
                style="width: 100%;" class="listing">
@@ -126,7 +126,7 @@
         <!--        </span>-->
         <!--    </tal:employees>-->
         <!--</fieldset>-->
-        
+
         <div tal:replace="structure provider:plone.abovecontentbody" />
         <!---->
         <!--<div class="highlighted-films" tal:condition="view/have_highlighted_films">-->
@@ -160,11 +160,7 @@
         <!--        <dd tal:content="film/summary" />-->
         <!--    </tal:block>-->
         <!--</dl>-->
-        
-        <div metal:use-macro="context/document_relateditems/macros/relatedItems">
-            show related items if they exist
-        </div>
-    
+
         <div tal:replace="structure provider:plone.belowcontentbody" />
 
     </tal:main-macro>
