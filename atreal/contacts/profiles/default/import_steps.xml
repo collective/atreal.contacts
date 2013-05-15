@@ -6,9 +6,9 @@
                title="Contacting tools">
                Create the tools we need
   </import-step>
-  <import-step id="catalog" version="20050929-01"
+  <import-step id="contacts_catalog" version="20050929-01"
                handler="atreal.contacts.catalog.importCatalogTool"
-               title="Catalog Tool">
+               title="Atreal Contacts Catalog Tool">
    <dependency step="toolset"/>
    Import catalog tool's sub-objects, indexes and columns.
   </import-step>

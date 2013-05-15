@@ -5,6 +5,9 @@ Changelog for atreal.contacts
 0.0.2 (Unreleased)
 ------------------
 
+- Fix bug with catalog : importStep name shouldn't be catalog
+  [cedricmessiant]
+
 - Organization and contact counters links to complete list.
   [thomasdesvenain]
 
